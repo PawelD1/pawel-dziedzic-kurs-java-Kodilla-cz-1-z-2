@@ -23,13 +23,13 @@ public class ShapeCollectorTestSuite {
     public void testCalculateField() {
         Square square = new Square();
         // square.getField();
-        Assert.assertEquals(25.0, square.getField());
+        Assert.assertEquals(25.0, square.getField(),0.01);
         Triangle triangle = new Triangle();
         // triangle.getField();
-        Assert.assertEquals(12.5, triangle.getField());
+        Assert.assertEquals(12.5, triangle.getField(),0.01);
         Circle circle = new Circle();
         // circle.getField();
-        Assert.assertEquals(75.0, circle.getField());
+        Assert.assertEquals(75.0, circle.getField(),0.01);
     }
 
     @Test
@@ -106,8 +106,5 @@ public class ShapeCollectorTestSuite {
         Assert.assertEquals(null, sc.getFigure(20));
         Assert.assertEquals(null, sc.getFigure(4));
         Assert.assertEquals(null, sc.getFigure(15));
-        //Assert.assertNotEquals(square,sc.getFigure(20));
-        //Assert.assertNotEquals(triangle, sc.getFigure(4));
-        //Assert.assertNotEquals(circle,sc.getFigure(15));
     }
 }
