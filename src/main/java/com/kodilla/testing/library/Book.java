@@ -1,7 +1,6 @@
 package com.kodilla.testing.library;
 
-public class Book
-{
+public class Book {
     String title;
     String author;
     int publicationYear;
@@ -53,3 +52,57 @@ public class Book
         return result;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
