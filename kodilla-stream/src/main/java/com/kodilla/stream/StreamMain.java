@@ -45,7 +45,7 @@ public class StreamMain {
         Forum f = new Forum();
         Map<Integer, ForumUser> mapOfChoosenUsers = f.getList().stream()
                 .filter(forumUser -> forumUser.getSex() == 'M')
-                .filter(forumUser -> forumUser.getDateOfBirthday().getYear() <= 1998)
+                .filter(forumUser -> forumUser.getDateOfBirthday().getYear() <= forumUser.getDateOfBirthday().now().getYear()-20)
 //                .filter(forumUser -> forumUser.getDateOfBirthday().getMonthValue() <= 11)
 //                .filter(forumUser -> forumUser.getDateOfBirthday().getDayOfMonth() <= 22)
                 .filter(forumUser -> forumUser.getAmountOfPosts() >= 1)
