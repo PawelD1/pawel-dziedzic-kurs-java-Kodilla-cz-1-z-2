@@ -15,8 +15,7 @@ public class ArrayOperationsTestSuite
 //        for(int i=0;i<20;i++)
 //        {
 //            numbers[i]=i+1;
-//        }
-        getAverage(numbers);
+//        }gi
         Assert.assertEquals(22.95, getAverage(numbers),0.1);
 
     }
