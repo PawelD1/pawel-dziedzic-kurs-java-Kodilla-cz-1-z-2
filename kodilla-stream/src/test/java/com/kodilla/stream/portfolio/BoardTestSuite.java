@@ -2,6 +2,8 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,18 +135,35 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
     @Test
-    void testAddTaskListAverageWorkingOnTask()
+    public void testAddTaskListAverageWorkingOnTask()
     {
         //Given
         Board project=prepareTestData();
-        //When
+       // When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        //long longTasks = project.getTaskLists().stream()
-              //  .filter(inProgressTasks::contains)
-                //.flatMap(tl -> tl.getTasks().stream())
+        long longTasks = project.getTaskLists().stream()
+               .filter(inProgressTasks::contains)
+                .flatMap(task->task.getTasks().stream())
+                .map(t->t.getCreated())
+                .map(t->t.minusDays(LocalDate.now().getDayOfYear()))
+                .count();
+        Assert.assertEquals(3, longTasks);
+               // .reduce(BigDecimal.ZERO, (, current) -> sum = sum.add(current));
+
+
                 //.map(t ->t.LocalDate.now()- t.getCreated())
                 //.sum(LocalDate.now)
+
+//        public BigDecimal getPeopleQuantityOfWorld() {
+//        return continents.stream()
+//                .flatMap(countryOfContinents -> countryOfContinents.getCountries().stream())
+//                .map(Country::getPeopleQuantity)
+//                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+
+
+    }
+
     }
 
 
@@ -153,7 +172,6 @@ public class BoardTestSuite {
 
 
 
-}
 
 
 
