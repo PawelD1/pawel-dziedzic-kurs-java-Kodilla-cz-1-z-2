@@ -7,15 +7,35 @@ import java.util.stream.Collectors;
 
 public class World
 {
-    private List<Europe> e = new ArrayList<>();
-    private List<Asia> a = new ArrayList<>();
-//    public ArrayList <BigDecimal> getPeopleQuantityOfEurope()
-//    {
-//        return e.stream()
-//                .flatMap(countryOfEurope-> countryOfEurope.getPeopleQuantityOfEurope().stream())
-//                .map(Country::getPeopleQuantity)
-//                .collect(Collectors.toList());
-//    }
+    private List<Continent>continents=new ArrayList<>();
+    public void addContinent(Continent continent)
+    {
+        continents.add(continent);
+    }
+
+    public List<Continent> getContinents() {
+        return continents;
+    }
+    public ArrayList <BigDecimal> getPeopleQuantityOfWorld()
+    {
+        return (ArrayList<BigDecimal>) continents.stream()
+                .flatMap(countryOfContinents-> countryOfContinents.getCountries().stream())
+                .map(Country::getPeopleQuantity)
+                .collect(Collectors.toList());
+    }
+    public BigDecimal addingEverythingPopulation()
+    {
+        ArrayList<BigDecimal> all=getPeopleQuantityOfWorld();
+        int n=all.size();
+        BigDecimal sum=new BigDecimal("0");
+        for(int i=0;i<n;i++)
+        {
+            sum=sum.add(all.get(i));
+
+        }
+        return sum;
+
+    }
 
 
 }
