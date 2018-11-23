@@ -39,8 +39,8 @@ public class WorldTestSuite
        azja.addCountry(turcja);
        world.addContinent(azja);
        BigDecimal bg= new BigDecimal("2225000000");
-       Assert.assertEquals(bg,world.addingEverythingPopulation());
-       
+       Assert.assertEquals(bg,world.getPeopleQuantityOfWorld());
+
     }
 
 }
