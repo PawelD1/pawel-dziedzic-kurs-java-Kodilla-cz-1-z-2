@@ -142,25 +142,30 @@ public class BoardTestSuite {
        // When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long longTasks = project.getTaskLists().stream()
+       // long longTasks = project.getTaskLists().stream()
+       // List<Integer> tasks = project.getTaskLists().stream()
+        Integer IAmountOfDays = project.getTaskLists().stream()
                .filter(inProgressTasks::contains)
                 .flatMap(task->task.getTasks().stream())
                 .map(t->t.getCreated())
-                .map(t->t.minusDays(LocalDate.now().getDayOfYear()))
+                .map(t->t.getDayOfYear())
+                //.map(t->t.minusDays(LocalDate.now().getDayOfYear()))
+                .map(t->-t+LocalDate.now().getDayOfYear())
+                .reduce(0, (sum, current) -> sum = sum+current);
+        long LAmountOfDays=(long) IAmountOfDays;
+
+        inProgressTasks.add(new TaskList("In progress"));
+        long amountOfElements = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(task->task.getTasks().stream())
                 .count();
-        Assert.assertEquals(3, longTasks);
-               // .reduce(BigDecimal.ZERO, (, current) -> sum = sum.add(current));
 
+        long average=LAmountOfDays/amountOfElements;
 
-                //.map(t ->t.LocalDate.now()- t.getCreated())
-                //.sum(LocalDate.now)
-
-//        public BigDecimal getPeopleQuantityOfWorld() {
-//        return continents.stream()
-//                .flatMap(countryOfContinents -> countryOfContinents.getCountries().stream())
-//                .map(Country::getPeopleQuantity)
-//                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
-
+        //Then
+        Assert.assertEquals(30,LAmountOfDays);
+        Assert.assertEquals(3,amountOfElements);
+        Assert.assertEquals(10,average);
 
     }
 
