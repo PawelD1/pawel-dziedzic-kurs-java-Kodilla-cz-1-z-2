@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -141,6 +142,7 @@ public class BoardTestSuite {
         Board project=prepareTestData();
        // When
         List<TaskList> inProgressTasks = new ArrayList<>();
+        Period period=Period.of(2018,11,23);
         inProgressTasks.add(new TaskList("In progress"));
        // long longTasks = project.getTaskLists().stream()
        // List<Integer> tasks = project.getTaskLists().stream()
@@ -148,10 +150,12 @@ public class BoardTestSuite {
                .filter(inProgressTasks::contains)
                 .flatMap(task->task.getTasks().stream())
                 .map(t->t.getCreated())
-                .map(t->t.getDayOfYear())
+                ///.map(t->t.getDayOfYear())
                 //.map(t->t.minusDays(LocalDate.now().getDayOfYear()))
-                .map(t->-t+LocalDate.now().getDayOfYear())
-                .reduce(0, (sum, current) -> sum = sum+current);
+               // .map(t->-t+LocalDate.now().getDayOfYear())
+                .map(t->period.between(t,LocalDate.now()))
+                .map(t->t.getDays())
+                .reduce(0, (sum, current) -> sum = sum+ current);
         long LAmountOfDays=(long) IAmountOfDays;
 
         inProgressTasks.add(new TaskList("In progress"));

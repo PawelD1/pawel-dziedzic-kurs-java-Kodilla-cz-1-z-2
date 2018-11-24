@@ -22,6 +22,9 @@ public class FirstChallenge {
         }catch(ArithmeticException e)
         {
             System.out.println("You can't divide by zero.");
+        }finally
+        {
+            System.out.println("This will always be displayed.");
         }
 
 
