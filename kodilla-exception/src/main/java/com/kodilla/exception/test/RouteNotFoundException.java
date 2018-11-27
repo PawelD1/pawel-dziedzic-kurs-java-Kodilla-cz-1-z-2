@@ -1,10 +1,9 @@
 package com.kodilla.exception.test;
 
-public class RouteNotFoundException extends Exception
-{
+public class RouteNotFoundException extends java.lang.Exception {
    public RouteNotFoundException(final String message)
    {
-       System.out.println(message);
-       //super(message); //nie działa super :(
+       //nic przed super
+       super(message); //nie działa super :(
    }
 }

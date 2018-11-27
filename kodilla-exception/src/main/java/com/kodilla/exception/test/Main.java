@@ -8,10 +8,33 @@ public class Main
         Flight flight3=new Flight("Wrocław","Waszyngton");
         Flight flight4=new Flight("Wrocław","Moskwa");
         FindingFlights findingFlights=new FindingFlights();
-        findingFlights.findFlight(flight);
-        findingFlights.findFlight(flight2);
-        findingFlights.findFlight(flight3);
-        findingFlights.findFlight(flight4);
+        try{
+            findingFlights.findFlight(flight);
+        }
+        catch(RouteNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+
+        try{
+            findingFlights.findFlight(flight2);
+        }
+        catch(RouteNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        try{
+            findingFlights.findFlight(flight3);
+        }catch(RouteNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+        try{
+            findingFlights.findFlight(flight4);
+        }catch(RouteNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+
+
+
     }
 
 }
