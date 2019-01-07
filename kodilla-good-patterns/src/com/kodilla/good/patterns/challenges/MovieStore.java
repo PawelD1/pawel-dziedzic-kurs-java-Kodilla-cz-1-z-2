@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class MovieStore {
-    Map<String, List<String>> booksTitlesWithTranslations = new HashMap<>();
 
     public Map<String, List<String>> getMovies() {
 
@@ -30,10 +29,6 @@ class MovieStore {
         booksTitlesWithTranslations.put("FL", flashTranslations);
 
         return booksTitlesWithTranslations;
-    }
-    public Map<String,List<String>> getMap()
-    {
-        return new HashMap<>(booksTitlesWithTranslations);
     }
     }
 
