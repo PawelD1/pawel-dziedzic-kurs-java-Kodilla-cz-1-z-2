@@ -13,12 +13,13 @@ public class MainC
         System.out.println("PIERWSZY SPOSÓB");
         titles.entrySet().stream()
                         .map(s -> s+"!")
-                         .forEach(System.out::print);
+                .collect(Collectors.joining("!","",""));
+        System.out.println(titles);
         System.out.println("\nDRUGI SPOSÓB");
                 theResultMapOfMovie.entrySet().stream()
                         .map(entry -> entry.getKey() + ": " + entry.getValue())
-                        .map(s->s+"!")
-                        .forEach(System.out::print);
+                        .collect(Collectors.joining("!","",""));
+         System.out.println(theResultMapOfMovie);
         System.out.println("\nTRZECI SPOSÓB");
         theResultMapOfMovie.keySet().stream()
             .map(s->s+"!")
