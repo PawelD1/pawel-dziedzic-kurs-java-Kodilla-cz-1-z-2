@@ -1,38 +1,38 @@
 package com.kodilla.good.patterns.challenges.food2Door;
 
-public class ExtraFoodShop
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class ExtraFoodShop implements Shop//pobieranie z magazynu
 {
-    private String name;
-    public int amount;
-    private String kindOfProduct;
-
-    public String getKindOfProduct() {
-        return kindOfProduct;
+    //statyczne nie zależy od obiektu a od klasy
+    private static Map<String,Integer>products=new HashMap<>();
+    static{//blok statyczny wypiszą sie wartości przed utworzeniem obiektu
+        products.put("Carrot",10);
     }
 
-    public ExtraFoodShop(int amount, String kindOfProduct, String name) {
-        this.amount = amount;
-        this.kindOfProduct=kindOfProduct;
-        this.name=name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    void info(Shop shop, int amount, String kindOfProduct )
+    public static Set<String>getProductsNames()
     {
-        System.out.println("The chosen supplier is "+shop+" ,which promise to deliver "+kindOfProduct+" in amount equals: "+amount );
+        return products.keySet();
     }
-    void process()
+
+
+    public void  info(int amount, String kindOfProduct )
+    {
+        System.out.println("The chosen supplier is "+this.getClass().getSimpleName()+" ,which promise to deliver "+products);
+    }
+    public void process()
     {
         System.out.println("The  "+amount+" pieces of "+kindOfProduct+" is placed in the shop and ready to send");
     }
-    boolean orderIsCompleted(Client client)
+
+    @Override
+    public boolean orderIsCompleted(Client client)
     {
         return getName().equals(client.getShop())&&getKindOfProduct().equals(client.getKindOfProduct())&&client.getAmount()<=amount&&client.getAmount()>0;
     }
-    void summary(Client c)
+    public void summary(Client c)
     {
         if (orderIsCompleted(c))
         {
