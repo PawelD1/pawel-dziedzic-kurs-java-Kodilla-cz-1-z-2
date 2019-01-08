@@ -20,4 +20,5 @@ public class SellRequest
     public Product getPrice() {
         return price;
     }
+
 }

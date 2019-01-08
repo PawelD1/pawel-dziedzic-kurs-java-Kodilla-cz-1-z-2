@@ -4,6 +4,6 @@ public class InformationService
 {
     String info(User user, Product product)
     {
-        return "The product named"+product.getNameOfProduct()+"is ordered by "+user.getLogin();
+        return "The product named "+product.getNameOfProduct()+" is ordered by "+user.getLogin()+".";
     }
 }

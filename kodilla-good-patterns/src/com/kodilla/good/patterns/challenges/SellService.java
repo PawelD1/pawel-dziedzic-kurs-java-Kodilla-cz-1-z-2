@@ -4,7 +4,7 @@ public class SellService
 {
     String sell(Product product, User user)
     {
-        return "The user"+user.getName()+" "+user.getLastName()+" bought "+product.getNameOfProduct()+" from "+product.getKindOfProduct()+" for price: "+product.getPrice();
+        return "The user "+user.getName()+" "+user.getLastName()+" bought "+product.getNameOfProduct()+" from "+product.getKindOfProduct()+" for price: "+product.getPrice()+"zł.";
     }
     boolean sell(Product nameOfProduct,Product price, User user)
     {
