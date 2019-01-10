@@ -5,13 +5,6 @@ import java.util.Map;
 
 public class MainFood2Door
 {
-    private static Map<String,Shop>warehouse=new HashMap<>();
-    static{
-        for(String product:ExtraFoodShop.getProductsNames())
-        {
-            warehouse.put(product,new ExtraFoodShop());
-        }
-    }
     public static void main(String [] args)
     {
         try {
@@ -34,9 +27,5 @@ public class MainFood2Door
         {
             System.out.println("The next selected product is not available in any shop.");
         }
-
-
-
-
     }
 }

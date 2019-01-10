@@ -3,38 +3,59 @@ package com.kodilla.good.patterns.challenges.flights;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FlightFinder
-{
-    private static Map<String,String> flights=new HashMap<>();
-    static
-    {
+public class FlightFinder {
+//    private String destinationCity;
+    private String startCity;
+//    public FlightFinder(String destinationCity, String startCity)
+//    {
+//            this.destinationCity=destinationCity;
+//            this.startCity=startCity;
+//    }
 
-        flights.put("Kraków","Gdańsk");
-        flights.put("Wrocław","Kraków");
-        flights.put("Rzeszów", "Kraków");
-        flights.put("Lublin","Rzeszów");
-        flights.put("Gdańsk","Lublin");
-        flights.put("Warszawa","Gdańsk")
+    private static Set<Flight> singleFlight = new HashSet<>();
 
+    static {
+        singleFlight.add(new Flight("Kraków", "Gdańsk"));
+        singleFlight.add(new Flight("Wrocław", "Kraków"));
+        singleFlight.add(new Flight("Rzeszów", "Kraków"));
+        singleFlight.add(new Flight("Lublin", "Rzeszów"));
+        singleFlight.add(new Flight("Gdańsk", "Lublin"));
+        singleFlight.add(new Flight("Warszawa", "Gdańsk"));
     }
-    public static Set<String> getDestinationCity()
+    public static Set<Flight>getCities()
     {
-        return flights.keySet();
+        return singleFlight;
     }
-    public static Collection<String> getStartCity()
+    public String getStartCity()
     {
-        return flights.values();
-    }
-    public Map<String,String> findingFlightsFrom(String city)
-    {
-        Map<String,String> startCity;
-
-        startCity=flights.entrySet().stream()
-                .map(entry->entry.getValue())
-                .filter(s->s.equals(city))
-                .collect(Collectors.toMap(FlightFinder::///???));
-
-
-
+        return startCity;
     }
 }
+
+
+//    }
+//    public  String getDestinationCity()
+//    {
+//        return destinationCity;
+//    }
+
+//    public void findingFlightsFrom(String city)
+//    {
+//        Set<FlightFinder> singleFlight=flights;
+//
+//        singleFlight.stream()
+//                .filter(s->s.startCity.equals(city))
+//                .forEach(System.out::println);
+//    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof FlightFinder)) return false;
+//        FlightFinder flightFinder = (FlightFinder) o;
+//        return startCity.equals(flightFinder.startCity);
+//    }
+//    @Override
+//    public int hashCode() {
+//        return startCity.hashCode();
+//    }
+//}
