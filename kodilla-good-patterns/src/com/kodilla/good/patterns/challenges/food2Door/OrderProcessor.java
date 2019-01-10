@@ -11,20 +11,28 @@ public class OrderProcessor
         {
             warehouse.put(product,new ExtraFoodShop());
         }
+        for(String product:GlutenFreeShop.getProductsNames())
+        {
+            warehouse.put(product,new GlutenFreeShop());
+        }
+        for(String product:HealthyShop.getProductsNames())
+        {
+            warehouse.put(product,new HealthyShop());
+        }
     }
-
-    private Shop findShop(Order order)
+    private Shop findShop(Order order) throws ShopNotExistException
     {
         if(warehouse.containsKey(order.getName()))
         {
             return warehouse.get(order.getName());
-        }//ShopNotExistingException
-        return null;
+        }
+        else
+            throw new ShopNotExistException("None of all ahop has got this product.");
     }
-    public void process(Order order)
+    public void process(Order order) throws ShopNotExistException
     {
         Shop shop=findShop(order);
         shop.process(order);
-        //shop.info
+
     }
 }

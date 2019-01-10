@@ -1,47 +1,47 @@
 package com.kodilla.good.patterns.challenges.food2Door;
 
-public class HealthyShop {
-    private String name;
-    public int amount;
-    private String kindOfProduct;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-    public String getKindOfProduct() {
-        return kindOfProduct;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public HealthyShop(int amount, String kindOfProduct,String name) {
-        this.amount = amount;
-        this.kindOfProduct=kindOfProduct;
-        this.name=name;
+public class HealthyShop implements Shop {
+    //statyczne nie zależy od obiektu a od klasy
+    private static Map<String,Integer> products=new HashMap<>();
+    static{//blok statyczny wypiszą sie wartości przed utworzeniem obiektu
+        products.put("Carrot",10);
+        products.put("Apples",15);
+        products.put("Oranges",8);
     }
 
-    void info(Shop shop, int amount, String kindOfProduct )
+    public static Set<String> getProductsNames()
     {
-        System.out.println("The chosen supplier is "+shop+" ,which promise to deliver "+kindOfProduct+" in amount equals: "+amount );
+        return products.keySet();
     }
-    void process()
+
+
+    public boolean  info(Order order)
     {
-        System.out.println("The  "+amount+" pieces of "+kindOfProduct+" is placed in the shop and ready to send");
-    }
-    boolean orderIsCompleted(Client client)
-    {
-        return getName().equals(client.getShop())&&getKindOfProduct().equals(client.getKindOfProduct())&&client.getAmount()<=amount&&client.getAmount()>0;
-    }
-    void summary(Client c)
-    {
-        if (orderIsCompleted(c))
+        int amountAfterOrder;
+        if(order.getAmount()>products.get(order.getName()))
         {
-            process();
-            this.amount = this.amount - c.getAmount();
+            System.out.println("The chosen supplier is "+this.getClass().getSimpleName()+" ,but amount "+order.getAmount()+" of "+order.getName()+" is too big.");
+            return false;
         }
-        else
-            System.out.println("The product " + getKindOfProduct() + " is not available from " + getName() +
-                    " or the wrong amount has been chosen, supplier has got " + amount + " you chosen " + c.getAmount());
+        else {
+            amountAfterOrder = products.get(order.getName()) - order.getAmount();
+            products.remove(order.getName());
+            products.put(order.getName(), amountAfterOrder);
+            System.out.println("The chosen supplier is " + this.getClass().getSimpleName() + " ,which promise to deliver " + order.getAmount() + " " + order.getName());
+            return true;
+        }
     }
+    public void process(Order order)
+    {
+        if(info(order))
+            System.out.println("The  "+order.getAmount()+" pieces of "+order.getName()+" is placed in the shop and ready to send");
+    }
+
+
 
 }
 

@@ -2,9 +2,6 @@ package com.kodilla.good.patterns.challenges.food2Door;
 
 public interface Shop
 {
-
-    void info(int amount,String kindOfProduct );
+    boolean info(Order order );
     void process(Order order);
-    boolean orderIsCompleted(Client client);
-    void summary(Client client);
 }

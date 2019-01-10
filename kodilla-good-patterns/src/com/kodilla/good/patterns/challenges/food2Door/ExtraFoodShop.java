@@ -9,7 +9,9 @@ public class ExtraFoodShop implements Shop//pobieranie z magazynu
     //statyczne nie zależy od obiektu a od klasy
     private static Map<String,Integer>products=new HashMap<>();
     static{//blok statyczny wypiszą sie wartości przed utworzeniem obiektu
-        products.put("Carrot",10);
+        products.put("Yoghurt",10);
+        products.put("Milk",15);
+        products.put("Cheese",8);
     }
 
     public static Set<String>getProductsNames()
@@ -18,30 +20,29 @@ public class ExtraFoodShop implements Shop//pobieranie z magazynu
     }
 
 
-    public void  info(int amount, String kindOfProduct )
+    public boolean  info(Order order)
     {
-        System.out.println("The chosen supplier is "+this.getClass().getSimpleName()+" ,which promise to deliver "+products);
+        int amountAfterOrder;
+        if(order.getAmount()>products.get(order.getName()))
+        {
+            System.out.println("The chosen supplier is "+this.getClass().getSimpleName()+" ,but amount "+order.getAmount()+" of "+order.getName()+" is too big.");
+            return false;
+        }
+        else {
+            amountAfterOrder = products.get(order.getName()) - order.getAmount();
+            products.remove(order.getName());
+            products.put(order.getName(), amountAfterOrder);
+            System.out.println("The chosen supplier is " + this.getClass().getSimpleName() + " ,which promise to deliver " + order.getAmount() + " " + order.getName());
+            return true;
+        }
     }
-    public void process()
+    public void process(Order order)
     {
-        System.out.println("The  "+amount+" pieces of "+kindOfProduct+" is placed in the shop and ready to send");
+        if(info(order))
+            System.out.println("The  "+order.getAmount()+" pieces of "+order.getName()+" is placed in the shop and ready to send");
     }
 
-    @Override
-    public boolean orderIsCompleted(Client client)
-    {
-        return getName().equals(client.getShop())&&getKindOfProduct().equals(client.getKindOfProduct())&&client.getAmount()<=amount&&client.getAmount()>0;
-    }
-    public void summary(Client c)
-    {
-        if (orderIsCompleted(c))
-        {
-            process();
-            this.amount = this.amount - c.getAmount();
-        }
-        else
-            System.out.println("The product " + getKindOfProduct() + " is not available from " + getName() +
-                    " or the wrong amount has been chosen, supplier has got " + amount + " you chosen " + c.getAmount());
-    }
+
+
 
 }
