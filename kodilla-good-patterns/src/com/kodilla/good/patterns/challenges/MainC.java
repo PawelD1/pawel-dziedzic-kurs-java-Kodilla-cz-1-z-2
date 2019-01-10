@@ -19,7 +19,7 @@ public class MainC
         System.out.println("\nDRUGI SPOSÓB");
         allOfTitles=theResultMapOfMovie.entrySet().stream()
                         .map(entry -> entry.getKey()+": " + entry.getValue())
-                        .collect(Collectors.joining("!","",""));
+                       .collect(Collectors.joining("!","",""));
         System.out.println(allOfTitles);
         System.out.println("\nTRZECI SPOSÓB");
         allOfTitles=theResultMapOfMovie.entrySet().stream()
