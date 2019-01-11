@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class MainFlights
 {
-    public static void main(String [] args)//Warszawa-Kraków Kraków-Gdansk
+    public static void main(String [] args)
     {
         City c1=new City("Gdańsk");
         FlightProcessor fp=new FlightProcessor();
@@ -19,8 +19,10 @@ public class MainFlights
         City startCity=new City("Gdańsk");
         City indirectCity=new City("Kraków");
         City destinationCity=new City("Wrocław");
-        flight=fp.findingIndirectFlights(startCity.getNameOfCity(),indirectCity.getNameOfCity(),destinationCity.getNameOfCity());
-        System.out.println(fp.StringIndirectFlights(flight));
+        flight=fp.findingIndirectFlights1(startCity.getNameOfCity(),indirectCity.getNameOfCity());
+        Set<Flight>flight2;
+        flight2=fp.findingIndirectFlights2(indirectCity.getNameOfCity(),destinationCity.getNameOfCity());
+        System.out.println(fp.StringIndirectFlights(flight,flight2));
 
     }
 }

@@ -41,31 +41,35 @@ public class FlightProcessor {
         }
         return s;
     }
-    public Set<Flight> findingIndirectFlights(String firstCity, String indirectCity, String finalCity) {
+    public Set<Flight> findingIndirectFlights1(String firstCity, String indirectCity)
+    {
         Set<Flight> indirectFlightsFrom = listOfFlightsToLookingFor;
         indirectFlightsFrom = listOfFlightsToLookingFor.stream()
                 .filter(m -> m.getDestinationCity().equals(indirectCity))
                 .filter(s -> s.getStartCity().equals(firstCity))
                 .collect(Collectors.toSet());
+        return indirectFlightsFrom;
+    }
+    public Set<Flight> findingIndirectFlights2(String indirectCity,String finalCity)
+    {
         Set<Flight> indirectFlightsTo = listOfFlightsToLookingFor;
         indirectFlightsTo = listOfFlightsToLookingFor.stream()
                 .filter(m -> m.getStartCity().equals(indirectCity))
                 .filter(m -> m.getDestinationCity().equals(finalCity))
                 .collect(Collectors.toSet());
-        Set<Flight> indirectFlights = new HashSet<Flight>();
-        indirectFlights.add((Flight) indirectFlightsTo);
-        indirectFlights.add((Flight) indirectFlightsFrom);
-        return indirectFlights;
+        return indirectFlightsTo;
     }
-    public String StringIndirectFlights(Set<Flight> indirectFlights)
+    public String StringIndirectFlights(Set<Flight> indirectFlightsFrom, Set<Flight>indirectFlightsTo)
     {
         String s="";
-        for (Flight flight : indirectFlights)
+        for (Flight flight : indirectFlightsFrom)
         {
-            s += "Flight to " + flight.getDestinationCity() + " from " + flight.getStartCity() + ".\n";
+            for(Flight flight2:indirectFlightsTo)
+            {
+                s += "Indirect Flight to " + flight2.getDestinationCity() + " from " + flight.getStartCity() +" is possible with change the airport. You must stop in "+flight.getDestinationCity()+" and then you may fly to "+flight2.getDestinationCity()+ ".\n";
+            }
         }
         return s;
-
     }
 }
 
