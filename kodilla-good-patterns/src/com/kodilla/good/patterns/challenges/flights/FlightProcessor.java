@@ -46,29 +46,61 @@ public class FlightProcessor {
         }
         return s;
     }
-
-    public String findingIndirectFlights(String firstCity, String finalCity) {
+    public Set<Flight> findingIndirectFlights(String firstCity, String finalCity) {
         Set<Flight> allIndirectflights = listOfFlightsToLookingFor;
         Set<Flight> allIndirectflightsFromStartCity = new HashSet<>();
-        for (Flight flight : allIndirectflights) {
+        Set<Flight> allIndirectflightsToFinalCity = new HashSet<>();
+        Set<Flight> allIndirectflightsBetweenTwoCities = new HashSet<>();
+        for (Flight flight : allIndirectflights)
+        {
             if (flight.getStartCity().equals(firstCity))
-            {
-                allIndirectflightsFromStartCity.add(flight);
-                break;
-            }
+                 allIndirectflightsFromStartCity.add(flight);
         }
-        for (Flight flight : allIndirectflights) {
-            for (Flight flight2 : allIndirectflightsFromStartCity) {
-                if (flight.getStartCity().equals(flight2.getDestinationCity()) && flight.getDestinationCity().equals(finalCity))
+        for (Flight flight : allIndirectflights)
+        {
+            if (flight.getDestinationCity().equals(finalCity))
+                allIndirectflightsToFinalCity.add(flight);
+        }
+            for(Flight flight1 : allIndirectflightsFromStartCity)
+            {
+                for(Flight flight2 : allIndirectflightsToFinalCity)
                 {
-                    return "Flight from " + firstCity + " to " + finalCity + " is possible when we buy flights : " + firstCity + "-"
-                            + flight2.getDestinationCity() + " and " + flight2.getDestinationCity() + "-" + finalCity;
+
+                if (flight1.getDestinationCity().equals(flight2.getStartCity()) && flight2.getDestinationCity().equals(finalCity))
+                {
+                    allIndirectflightsBetweenTwoCities.add(flight1);
+                    allIndirectflightsBetweenTwoCities.add(flight2);
+                    System.out.println("Flight from " + firstCity + " to " + finalCity + " is possible when we buy flights : " + firstCity + "-"
+                           + flight1.getDestinationCity() + " and " + flight2.getStartCity() + "-" + finalCity+".");
                 }
             }
         }
-        return "Flight from "+firstCity+" to "+finalCity+" is not possible from these cities even with a change airport in other city.";
+        return allIndirectflightsBetweenTwoCities;
     }
 }
+
+//    public String findingIndirectFlights(String firstCity, String finalCity) {
+//        Set<Flight> allIndirectflights = listOfFlightsToLookingFor;
+//        Set<Flight> allIndirectflightsFromStartCity = new HashSet<>();
+//        for (Flight flight : allIndirectflights) {
+//            if (flight.getStartCity().equals(firstCity))
+//            {
+//                allIndirectflightsFromStartCity.add(flight);
+//                break;
+//            }
+//        }
+//        for (Flight flight : allIndirectflights) {
+//            for (Flight flight2 : allIndirectflightsFromStartCity) {
+//                if (flight.getStartCity().equals(flight2.getDestinationCity()) && flight.getDestinationCity().equals(finalCity))
+//                {
+//                    return "Flight from " + firstCity + " to " + finalCity + " is possible when we buy flights : " + firstCity + "-"
+//                            + flight2.getDestinationCity() + " and " + flight2.getDestinationCity() + "-" + finalCity;
+//                }
+//            }
+//        }
+//        return "Flight from "+firstCity+" to "+finalCity+" is not possible from these cities even with a change airport in other city.";
+//    }
+//}
 //    public Set<Flight> findingIndirectFlights1(String firstCity, String indirectCity)
 //    {
 //        Set<Flight> indirectFlightsFrom = listOfFlightsToLookingFor;
