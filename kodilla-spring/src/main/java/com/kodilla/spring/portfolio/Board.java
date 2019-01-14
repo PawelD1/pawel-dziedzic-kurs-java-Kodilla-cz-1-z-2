@@ -11,4 +11,10 @@ public final class Board
         this.inProgressList = inProgressList;
         this.doneList = doneList;
     }
+    public void read()
+    {
+        System.out.println("To do list: "+toDoList.tasks);
+        System.out.println("In progress list: "+inProgressList.tasks);
+        System.out.println("Done list: "+doneList.tasks);
+    }
 }

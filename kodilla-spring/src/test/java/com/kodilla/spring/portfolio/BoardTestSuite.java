@@ -28,7 +28,8 @@ public class BoardTestSuite
 
         List<String> listOfTasksDone=new ArrayList<>();
         listOfTasksDone.add("Homework");
-        board.doneList.tasks=listOfTasksInProgress;
+        board.doneList.tasks=listOfTasksDone;
+        board.read();
 
 
 
