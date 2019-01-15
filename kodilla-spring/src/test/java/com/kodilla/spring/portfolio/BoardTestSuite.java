@@ -1,6 +1,7 @@
 package com.kodilla.spring.portfolio;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,7 +30,10 @@ public class BoardTestSuite
         List<String> listOfTasksDone=new ArrayList<>();
         listOfTasksDone.add("Homework");
         board.doneList.tasks=listOfTasksDone;
-        board.read();
+        System.out.println(board.read());
+        Assert.assertEquals("To do list: "+board.toDoList.tasks+"\n"+
+                "In progress list: "+board.inProgressList.tasks+"\n"+
+                "Done list: "+board.doneList.tasks,board.read());
 
 
 
