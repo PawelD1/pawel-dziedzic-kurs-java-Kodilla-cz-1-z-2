@@ -31,9 +31,9 @@ public class BoardTestSuite
         listOfTasksDone.add("Homework");
         board.doneList.tasks=listOfTasksDone;
         System.out.println(board.read());
-        Assert.assertEquals("To do list: "+board.toDoList.tasks+"\n"+
-                "In progress list: "+board.inProgressList.tasks+"\n"+
-                "Done list: "+board.doneList.tasks,board.read());
+        Assert.assertEquals("To do list: [Project]\n"+
+                "In progress list: [Game]\n"+
+                "Done list: [Homework]",board.read());
 
 
 
