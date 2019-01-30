@@ -1,4 +1,4 @@
-package com.kodilla.stream.testing.shape;
+package com.kodilla.testing.shape;
 
 import org.junit.Assert;
 import org.junit.Test;

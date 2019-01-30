@@ -1,8 +1,5 @@
 package com.kodilla.good.patterns.challenges.food2Door;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainFood2Door
 {
     public static void main(String [] args)

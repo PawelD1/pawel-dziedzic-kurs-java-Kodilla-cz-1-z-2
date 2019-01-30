@@ -1,6 +1,6 @@
 package com.kodilla.statistics;
-import com.kodilla.testing.forum.statistics.ForumStatistics;
-import com.kodilla.testing.forum.statistics.Statistics;
+import com.kodilla.testing.statistics.ForumStatistics;
+import com.kodilla.testing.statistics.Statistics;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.Assert;
 import org.junit.Test;

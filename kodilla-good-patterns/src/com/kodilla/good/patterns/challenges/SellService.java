@@ -1,8 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
-public class SellService
+public class SellService implements ISellService
 {
-    String sell(Product product, User user)
+    public String sell(Product product, User user)
     {
         return "The user "+user.getName()+" "+user.getLastName()+" bought "+product.getNameOfProduct()+" from "+product.getKindOfProduct()+" for price: "+product.getPrice()+"zł.";
     }
@@ -13,7 +13,7 @@ public class SellService
             return true;
         else return false;
     }
-    boolean isSold(Product product, User user)
+    public boolean isSold(Product product, User user)
     {
         if(product!=null&&user!=null)
             return true;

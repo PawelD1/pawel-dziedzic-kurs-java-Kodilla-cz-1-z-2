@@ -1,4 +1,4 @@
-package com.kodilla.stream.testing.weather.stub;
+package com.kodilla.testing.weather.stub;
 
 import com.kodilla.testing.weather.stub.Temperatures;
 

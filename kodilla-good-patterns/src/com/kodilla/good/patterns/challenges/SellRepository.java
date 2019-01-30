@@ -14,7 +14,7 @@ public class SellRepository
             return add;
 
         }
-        void showRepository(Map<String,String> add)
+        public void showRepository(Map<String,String> add)
         {
             int nr=0;
             Set<Map.Entry<String, String>> repository = add.entrySet();

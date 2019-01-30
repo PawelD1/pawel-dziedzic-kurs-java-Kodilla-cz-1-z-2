@@ -1,5 +1,5 @@
 package com.kodilla.good.patterns.challenges;
-import java.awt.print.Book;
+
 import java.util.*;
 import java.util.stream.*;
 public class MainC
@@ -32,6 +32,36 @@ public class MainC
                 .forEach(System.out::print);
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

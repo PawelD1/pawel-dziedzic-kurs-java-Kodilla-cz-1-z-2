@@ -23,3 +23,5 @@ public final class Logger {
         return lastLog;
     }
 }
+
+

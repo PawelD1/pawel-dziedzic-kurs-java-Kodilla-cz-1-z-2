@@ -18,3 +18,5 @@ public final class ForumUser
         return username;
     }
 }
+
+

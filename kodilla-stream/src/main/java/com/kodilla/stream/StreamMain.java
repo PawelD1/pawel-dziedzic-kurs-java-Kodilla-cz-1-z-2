@@ -1,10 +1,7 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifer;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
-import com.kodilla.stream.iterate.NumbersGenerator;
-
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -22,6 +19,7 @@ import java.util.stream.Collectors;
 //        processor.execute(() -> System.out.println("This is an example text."));
 //    }
 //}
+
 
 //public class StreamMain
 //{
@@ -56,4 +54,5 @@ public class StreamMain {
                 .forEach(System.out::println);
     }
 }
+
 

@@ -11,13 +11,7 @@ public class ArrayOperationsTestSuite
     public void testGetAverage()
     {
         int[]numbers={20,19,18,6,5,4,6,7,8,5,6,7,12,45,65,67,78,67,6,8};
-
-//        for(int i=0;i<20;i++)
-//        {
-//            numbers[i]=i+1;
-//        }gi
         Assert.assertEquals(22.95, getAverage(numbers),0.1);
-
     }
     @Test
     public void testGetAverageWithNull()

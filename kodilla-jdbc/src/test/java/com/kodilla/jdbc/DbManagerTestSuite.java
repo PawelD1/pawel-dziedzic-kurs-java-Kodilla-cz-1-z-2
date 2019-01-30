@@ -72,9 +72,11 @@ public class DbManagerTestSuite {
 
 
 
-
-
-
+//	public double averageIs(int sum, int quantity)
+//	{
+//		return average=(double)sum/quantity;
+//	}
+//}
 
 
 

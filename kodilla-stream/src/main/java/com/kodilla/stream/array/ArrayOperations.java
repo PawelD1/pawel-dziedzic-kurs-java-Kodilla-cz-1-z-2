@@ -20,8 +20,6 @@ public interface ArrayOperations {
         } else {
             return 0;
         }
-
-
     }
 }
 

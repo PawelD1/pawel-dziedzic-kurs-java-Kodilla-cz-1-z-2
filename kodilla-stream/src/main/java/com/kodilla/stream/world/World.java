@@ -3,7 +3,6 @@ package com.kodilla.stream.world;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class World {
     private List<Continent> continents = new ArrayList<>();
@@ -25,16 +24,4 @@ public class World {
 
     }
 }
-//    public BigDecimal addingEverythingPopulation()
-//    {
-//        ArrayList<BigDecimal> all=getPeopleQuantityOfWorld();
-//        int n=all.size();
-//        BigDecimal sum=new BigDecimal("0");
-//        for(int i=0;i<n;i++)
-//        {
-//            sum=sum.add(all.get(i));
-//
-//        }
-//        return sum;
-//
-//    }
+
