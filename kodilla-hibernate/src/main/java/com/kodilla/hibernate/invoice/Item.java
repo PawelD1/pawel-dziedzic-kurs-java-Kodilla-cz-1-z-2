@@ -1,25 +1,33 @@
 package com.kodilla.hibernate.invoice;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name="ITEMS")
 public class Item
 {
     private int id;
-    private Product product;
     private BigDecimal price;
     private int qunatity;
     private BigDecimal value;
+    private Product product;
 
+    public Item(BigDecimal price, int qunatity, BigDecimal value) {
+        this.price = price;
+        this.qunatity = qunatity;
+        this.value = value;
+    }
+    @Id
+    @GeneratedValue
+    @NotNull
     public int getId() {
         return id;
     }
 
 
+    @ManyToOne
     public Product getProduct() {
         return product;
     }
