@@ -44,16 +44,12 @@ public class InvoiceDaoTestSuite
         itemsForProduct2.add(item2);
         product.setItems(itemsForProduct2);
         Invoice invoice=new Invoice("One");
-        //Invoice invoice1=new Invoice("Two");
         List<Item> itemsForInvoice=new ArrayList<>();
         itemsForInvoice.addAll(itemsForProduct);
         itemsForInvoice.addAll(itemsForProduct1);
         itemsForInvoice.addAll(itemsForProduct2);
         invoice.setItems(itemsForInvoice);
-        //List<Item> itemsForInvoice1=new ArrayList<>();
-        //itemsForInvoice1.addAll(itemsForProduct1);
-        //itemsForInvoice1.addAll(itemsForProduct2);
-        //invoice1.setItems(itemsForInvoice1);
+
 
         //When
         invoiceDao.save(invoice);
