@@ -141,11 +141,15 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
         List<Company> threeFirstLettersOfCompany=companyDao.lookingForCompanyWithThreeFirstLetters("Sof");
+        for(int i=1;i<threeFirstLettersOfCompany.size();i++)
+        {
+            System.out.println(threeFirstLettersOfCompany.get(i).toString());
+        }
 
 
         //Then
 
-        Assert.assertEquals(3,threeFirstLettersOfCompany.size());
+        Assert.assertEquals(1,threeFirstLettersOfCompany.size());
 
         //CleanUp
         try {

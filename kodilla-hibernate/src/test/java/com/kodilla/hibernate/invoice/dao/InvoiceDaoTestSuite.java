@@ -30,25 +30,19 @@ public class InvoiceDaoTestSuite
         Item item=new Item(new BigDecimal(200),2,new BigDecimal(300));
         Item item1=new Item(new BigDecimal(100),1,new BigDecimal(200));
         Item item2=new Item(new BigDecimal(300),3,new BigDecimal(400));
-        List<Item> itemsForProduct=new ArrayList<>();
-        itemsForProduct.add(item);
-        itemsForProduct.add(item2);
-        product.setItems(itemsForProduct);
-        List<Item> itemsForProduct1=new ArrayList<>();
-        itemsForProduct1.add(item1);
-        itemsForProduct.add(item2);
-        product1.setItems(itemsForProduct1);
-        List<Item> itemsForProduct2=new ArrayList<>();
-        itemsForProduct2.add(item);
-        itemsForProduct2.add(item1);
-        itemsForProduct2.add(item2);
-        product.setItems(itemsForProduct2);
+        item.setProduct(product);
+        item1.setProduct(product1);
+        item2.setProduct(product2);
+        product.getItems().add(item);
+        product1.getItems().add(item1);
+        product2.getItems().add(item2);
         Invoice invoice=new Invoice("One");
-        List<Item> itemsForInvoice=new ArrayList<>();
-        itemsForInvoice.addAll(itemsForProduct);
-        itemsForInvoice.addAll(itemsForProduct1);
-        itemsForInvoice.addAll(itemsForProduct2);
-        invoice.setItems(itemsForInvoice);
+        invoice.getItems().add(item1);
+        invoice.getItems().add(item);
+        invoice.getItems().add(item2);
+
+
+
 
 
         //When

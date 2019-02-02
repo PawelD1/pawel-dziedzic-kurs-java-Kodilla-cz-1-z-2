@@ -7,7 +7,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name="Company.lookingForCompanyWithThreeFirstLetters",
-        query="SELECT SUBSTR(COMPANY_NAME,1,3) FROM COMPANIES WHERE COMPANY_NAME=:GIVENNAME"
+        query="SELECT * FROM COMPANIES WHERE SUBSTR(COMPANY_NAME,1,3)=:GIVENNAME"
 )
 @Entity
 @Table(name = "COMPANIES")
