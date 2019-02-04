@@ -12,6 +12,7 @@ public class Invoice
     private  int id;
     private String number;
     private List<Item> items=new ArrayList<>();
+    private Product product;
     public Invoice(){
 
     }
@@ -37,6 +38,15 @@ public class Invoice
     )
     public List<Item> getItems() {
         return items;
+    }
+
+    @OneToOne (cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public void setId(int id) {
