@@ -6,9 +6,14 @@ import com.kodilla.hibernate.manytomany.dao.CompanyDao;
 import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 
 public class FacadeTestSuite {
     @Autowired
@@ -28,28 +33,30 @@ public class FacadeTestSuite {
         Employee employee3=new Employee("Jim","Zajc");
         Employee employee4=new Employee("Adam","Kong");
         Employee employee5=new Employee("Domen","Oamen");
-        facade.dataOfEmployee(employee1);
-        facade.dataOfCompany(company1);
-        facade.processCompany(company1,employee1);
-        facade.dataOfEmployee(employee2);;
-        facade.dataOfCompany(company2);
-        facade.processCompany(company2,employee2);
-        facade.dataOfEmployee(employee3);
-        facade.dataOfCompany(company3);
-        facade.processCompany(company3,employee3);
-        facade.dataOfEmployee(employee4);
-        facade.dataOfEmployee(employee5);
-        facade.processCompany(company2,employee4);
-        facade.processCompany(company3,employee5);
+        company1.getEmployees().add(employee1);
+        company2.getEmployees().add(employee2);
+        company3.getEmployees().add(employee3);
+        company3.getEmployees().add(employee4);
+        company2.getEmployees().add(employee5);
+        employee1.getCompanies().add(company1);
+        employee2.getCompanies().add(company2);
+        employee3.getCompanies().add(company3);
+        employee4.getCompanies().add(company3);
+        employee5.getCompanies().add(company2);
+
+
+        //When
 
         companyDao.save(company1);
         companyDao.save(company2);
         companyDao.save(company3);
 
-        List<Employee> nameOfEmployee=employeeDao.lookingForEmployeeWithFragmentText("%am%");
+        List<Employee> nameOfEmployee=employeeDao.lookingForEmployeeWithFragmentText("am");
 
 
-        List<Company> nameOfComapany=companyDao.lookingForCompanyWithFragmentText("%uil%");
+        List<Company> nameOfComapany=companyDao.lookingForCompanyWithFragmentText("uil");
+
+        //Then
 
         Assert.assertEquals(2,nameOfEmployee.size());
         Assert.assertEquals(1,nameOfComapany.size());
