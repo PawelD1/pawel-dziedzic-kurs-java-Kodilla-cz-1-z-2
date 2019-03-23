@@ -46,23 +46,23 @@ public class Facade {
 //            employeeDao.save(employee);
 //            return employee;
 //    }
-    public Employee dataOfEmployee(Employee e) {
-        return new Employee(e.getFirstname(),e.getLastname());
-    }
-
-    public Company dataOfCompany(Company c) {
-        return new Company(c.getName());
-    }
-
-    public void processCompany(Company c, Employee e) {
-        Employee employee = dataOfEmployee(e);
-        c.getEmployees().add(employee);
-       // companyDao.save(c);
-    }
-
-    public void processEmployee(Employee e, Company c) {
-        Company company = dataOfCompany(c);
-        e.getCompanies().add(company);
-        //employeeDao.save(e);
-    }
+//    public Employee dataOfEmployee(Employee e) {
+//        return new Employee(e.getFirstname(),e.getLastname());
+//    }
+//
+//    public Company dataOfCompany(Company c) {
+//        return new Company(c.getName());
+//    }
+//
+//    public void processCompany(Company c, Employee e) {
+//        Employee employee = dataOfEmployee(e);
+//        c.getEmployees().add(employee);
+//       // companyDao.save(c);
+//    }
+//
+//    public void processEmployee(Employee e, Company c) {
+//        Company company = dataOfCompany(c);
+//        e.getCompanies().add(company);
+//        //employeeDao.save(e);
+//    }
 }
