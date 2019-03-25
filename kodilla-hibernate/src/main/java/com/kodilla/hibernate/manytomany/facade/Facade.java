@@ -13,11 +13,13 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
         @NamedNativeQuery(
                 name = "Company.lookingForCompanyWithFragmentText",
-                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE '%'+@ARG+'%'"
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%',':name' ,'%')"
         ),
         @NamedNativeQuery(
                 name = "Employee.lookingForEmployeeWithFragmentText",
-                query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE '%'+@ARG+'%'"
+                query="SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE CONCAT('%',':name' ,'%')"
+
+
         )
 })
 

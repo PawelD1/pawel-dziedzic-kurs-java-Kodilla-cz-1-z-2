@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
     List<Employee> lookingForNameOfEmployee(@Param("LASTNAME") String lastName);
-    List<Employee> lookingForEmployeeWithFragmentText(@Param("ARG") String lastName);
+    List<Employee> lookingForEmployeeWithFragmentText(@Param("name") String lastName);
 
 
 }

@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
     List<Company> lookingForCompanyWithThreeFirstLetters(@Param("GIVENNAME") String givenName);
-    List<Company> lookingForCompanyWithFragmentText(@Param("ARG") String name);
+    List<Company> lookingForCompanyWithFragmentText(@Param("name") String name);
 
 }

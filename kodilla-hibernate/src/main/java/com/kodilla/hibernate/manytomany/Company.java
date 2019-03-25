@@ -12,7 +12,7 @@ import java.util.List;
         ),
         @NamedNativeQuery(
                 name = "Company.lookingForCompanyWithFragmentText",
-                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE COMPANY_NAME.concat('%'+@ARG+'%'"
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%',':name' ,'%')"
         )
                 })
 

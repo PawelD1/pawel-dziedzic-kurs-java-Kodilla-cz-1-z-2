@@ -12,7 +12,9 @@ import java.util.List;
 )
 @NamedNativeQuery(
         name = "Employee.lookingForEmployeeWithFragmentText",
-        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE '%'+@ARG+'%'"
+        //query = "SELECT *, CONCAT('%','@ARG','%') AS ARG FROM EMPLOYEES WHERE LASTNAME LIKE :ARG "
+        //query = "SELECT * FROM EMPLOYEE WHERE LASTNAME LIKE CONCAT('%','@ARG','%') AS FRAGMENT_NAME FRAGMENT_NAME "
+        query="SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE CONCAT('%',':name' ,'%')"
 )
 @Entity
 @Table(name = "EMPLOYEES")
