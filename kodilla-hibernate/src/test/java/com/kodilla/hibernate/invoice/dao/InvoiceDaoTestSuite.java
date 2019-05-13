@@ -57,7 +57,7 @@ public class InvoiceDaoTestSuite
         Assert.assertNotEquals(0, id);
 
         //CleanUp
-        invoiceDao.delete(id);
+        invoiceDao.deleteById(id);
         //błędy: konieczne id, poprawny mapped i bezparametrowy konstruktor w klasie Invoice
 
     }

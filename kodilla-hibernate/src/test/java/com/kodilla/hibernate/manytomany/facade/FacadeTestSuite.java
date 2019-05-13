@@ -58,7 +58,7 @@ public class FacadeTestSuite {
 
         //Then
 
-        //Assert.assertEquals(2,nameOfEmployee.size());
+        Assert.assertEquals(2,nameOfEmployee.size());
         Assert.assertEquals(1,nameOfCompany.size());
 
 

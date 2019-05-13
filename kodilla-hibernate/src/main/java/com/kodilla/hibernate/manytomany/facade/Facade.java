@@ -10,18 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
-@NamedNativeQueries({
-        @NamedNativeQuery(
-                name = "Company.lookingForCompanyWithFragmentText",
-                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%',':name' ,'%')"
-        ),
-        @NamedNativeQuery(
-                name = "Employee.lookingForEmployeeWithFragmentText",
-                query="SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE CONCAT('%',':name' ,'%')"
 
-
-        )
-})
 
 
 @Service
